@@ -14,7 +14,11 @@
 | [docs/onboarding.md](./docs/onboarding.md) | 첫 10분 온보딩 시나리오 |
 | [docs/inhumanity-system.md](./docs/inhumanity-system.md) | 비인간성 게이지 수치/공식 |
 | [docs/market-simulation.md](./docs/market-simulation.md) | NPC 트레이더 10명 + 시장 동역학 |
+| [docs/market-solo-build.md](./docs/market-solo-build.md) | 솔로 빌드 스펙 (캐릭터 없이 시장만 검증) |
 | [docs/personas.md](./docs/personas.md) | 페르소나 30종 디테일 |
+| [docs/playtest-cards.md](./docs/playtest-cards.md) | 플레이테스트용 페르소나 5종 풀 카드시트 |
+| [docs/story-arcs.md](./docs/story-arcs.md) | 메인 스토리 5분기 + 엔딩 5종 |
+| [docs/ui-wireframes.md](./docs/ui-wireframes.md) | UI 와이어프레임 + 디자인 토큰 |
 | [docs/steam-page.md](./docs/steam-page.md) | Steam 카피 + 키 비주얼 컨셉 |
 
 ---
