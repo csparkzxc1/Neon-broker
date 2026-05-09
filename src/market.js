@@ -1,5 +1,7 @@
-import { state, logHistory, addHolding, removeHolding, findAsset } from './state.js';
+import { state, logHistory, addHolding, removeHolding, findAsset, queueDialogue, holdSecondsOf, holdCyclesOf } from './state.js';
 import { round } from './data.js';
+import { applyInhumanity, deltaForSell } from './inhumanity.js';
+import { pickDialogue } from './personas.js';
 
 // Place an order. Tries to match immediately against the book.
 // Returns { matched: qty, remaining: qty }.
@@ -45,6 +47,7 @@ function executeTrade(asset, price, qty, buyer, seller) {
 
   const isPlayer = buyer === 'player' || seller === 'player';
   if (isPlayer) {
+    asset.timesTradedByPlayer += 1;
     if (buyer === 'player') {
       const cost = price * qty;
       state.capital = round(state.capital - cost, 4);
@@ -52,16 +55,40 @@ function executeTrade(asset, price, qty, buyer, seller) {
       state.cycleStats.bought += qty;
       state.cycleStats.trades += 1;
       logHistory(`PLAYER bought ${asset.id} x${qty} @ ${price.toFixed(3)}`, 'player-buy');
+      // Greet line based on persona dialogue & inhumanity
+      const persona = asset.persona;
+      if (persona) {
+        const line = pickDialogue(persona, state.inhumanity);
+        queueDialogue(asset.id, line, 'greet');
+        asset.lastSeenInDialogue = state.cycleElapsedSec;
+      }
     } else {
       const proceed = price * qty;
       const holding = state.holdings.get(asset.id);
       const cost = holding ? holding.avgPrice * qty : 0;
+      const realized = proceed - cost;
       state.capital = round(state.capital + proceed, 4);
+
+      // Inhumanity penalty for sale
+      const holdSec = holdSecondsOf(asset.id);
+      const holdCyc = holdCyclesOf(asset.id);
+      const recentChange = (asset.price - (holding ? holding.avgPrice : asset.price)) / Math.max(0.001, holding ? holding.avgPrice : asset.price);
+      const dI = deltaForSell({ asset, holdQty: qty, holdCycles: holdCyc, holdSeconds: holdSec, recentChange });
+      applyInhumanity(dI, `sell ${asset.id}`);
+
       removeHolding(asset.id, qty);
       state.cycleStats.sold += qty;
       state.cycleStats.trades += 1;
-      state.cycleStats.realizedPnL = round(state.cycleStats.realizedPnL + (proceed - cost), 4);
-      logHistory(`PLAYER sold ${asset.id} x${qty} @ ${price.toFixed(3)} (${proceed - cost >= 0 ? '+' : ''}${(proceed - cost).toFixed(3)})`, 'player-sell');
+      state.cycleStats.realizedPnL = round(state.cycleStats.realizedPnL + realized, 4);
+      logHistory(`PLAYER sold ${asset.id} x${qty} @ ${price.toFixed(3)} (${realized >= 0 ? '+' : ''}${realized.toFixed(3)})`, 'player-sell');
+      // Goodbye line
+      const persona = asset.persona;
+      if (persona && persona.onSell) {
+        const line = holdSec < 60 ? persona.onSell.short
+                  : holdCyc >= 5 ? persona.onSell.long
+                  : pickDialogue(persona, state.inhumanity);
+        queueDialogue(asset.id, line, 'farewell');
+      }
     }
   } else {
     logHistory(`${buyer} bought ${asset.id} from ${seller} @ ${price.toFixed(3)}`, 'npc');

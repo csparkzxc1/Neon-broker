@@ -1,5 +1,7 @@
-import { state, findAsset } from './state.js';
+import { state, findAsset, popDialogue } from './state.js';
 import { getBook } from './market.js';
+import { colorFor, bandOf } from './inhumanity.js';
+import { canPlayerTrade } from './actions.js';
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -17,6 +19,13 @@ export function renderHUD() {
   document.querySelectorAll('.speed-btn').forEach(btn => {
     btn.classList.toggle('active', Number(btn.dataset.speed) === state.speed);
   });
+
+  // Inhumanity gauge
+  const v = Math.round(state.inhumanity);
+  $('#inh-num').textContent = v;
+  const fill = $('#inh-fill');
+  fill.style.width = `${v}%`;
+  fill.style.background = colorFor(v);
 }
 
 export function renderMarketList() {
@@ -33,8 +42,9 @@ export function renderMarketList() {
     const ch = a.lastChange;
     const arrow = ch > 0.001 ? '↗' : ch < -0.001 ? '↘' : '→';
     const cls = ch > 0.001 ? 'up' : ch < -0.001 ? 'down' : 'flat';
+    const locked = !canPlayerTrade(a);
     html += `
-      <div class="market-row ${isSel ? 'selected' : ''}" data-id="${a.id}">
+      <div class="market-row ${isSel ? 'selected' : ''} ${locked ? 'locked' : ''}" data-id="${a.id}">
         <span class="id">${a.id}</span>
         <span class="rarity ${a.rarity}">${a.rarity}</span>
         <span class="price">${a.price.toFixed(3)}</span>
@@ -49,10 +59,18 @@ export function renderChart() {
   const a = findAsset(state.selectedAssetId);
   const titleEl = $('#chart-title');
   const priceEl = $('#chart-price');
+  const cardName = $('#pcard-name');
+  const cardMeta = $('#pcard-meta');
+  const cardSummary = $('#pcard-summary');
+  const cardTraits = $('#pcard-traits');
   if (!a) {
     titleEl.textContent = 'DEPTH CHART — select asset';
     priceEl.textContent = '';
     $('#chart').innerHTML = '';
+    cardName.textContent = '—';
+    cardMeta.textContent = '';
+    cardSummary.textContent = '';
+    cardTraits.textContent = '';
     return;
   }
   titleEl.innerHTML = `DEPTH CHART — ${a.id}  <span class="rarity ${a.rarity}" style="margin-left:8px">${a.rarity}</span>`;
@@ -60,6 +78,14 @@ export function renderChart() {
   const sign = ch > 0 ? '+' : '';
   priceEl.textContent = `${a.price.toFixed(3)} ETH  ${sign}${(ch * 100).toFixed(2)}%`;
   priceEl.className = ch > 0.001 ? 'up' : ch < -0.001 ? 'down' : '';
+
+  // Persona card
+  const p = a.persona;
+  cardName.textContent = p.id;
+  cardMeta.textContent = `${a.rarity} · EGO ${p.ego} · ${a.timesTradedByPlayer}x traded by you`;
+  cardSummary.textContent = p.summary;
+  const t = a.traits;
+  cardTraits.innerHTML = `H: ${t.hair}<br>O: ${t.outfit}<br>A: ${t.accessory}<br>BG: ${t.background}<br>AURA: ${t.aura}`;
 
   const svg = $('#chart');
   const W = 800, H = 320;
@@ -80,14 +106,12 @@ export function renderChart() {
   const points = hist.map(h => `${x(h.t).toFixed(1)},${y(h.price).toFixed(1)}`).join(' ');
   const fillPoints = `0,${H} ${points} ${W},${H}`;
 
-  // Grid lines
   let grid = '';
   for (let i = 1; i < 4; i++) {
     const yy = (H / 4) * i;
     grid += `<line class="grid-line" x1="0" x2="${W}" y1="${yy}" y2="${yy}" />`;
   }
 
-  // Y labels
   const yLabels = `
     <text x="6" y="14">${maxP.toFixed(3)}</text>
     <text x="6" y="${H - 6}">${minP.toFixed(3)}</text>
@@ -143,7 +167,7 @@ export function renderHoldings() {
     const pnl = value - cost;
     const cls = pnl > 0.0001 ? 'up' : pnl < -0.0001 ? 'down' : '';
     const sign = pnl > 0 ? '+' : '';
-    const isSel = aid === state.selectedHoldingId;
+    const isSel = aid === state.selectedAssetId;
     html += `
       <div class="holding-row ${isSel ? 'selected' : ''}" data-id="${aid}">
         <span class="id">${aid}</span>
@@ -166,6 +190,7 @@ export function renderHistory() {
     if (h.type === 'player-buy') cls = 'player buy';
     else if (h.type === 'player-sell') cls = 'player sell';
     else if (h.type === 'event') cls = 'event';
+    else if (h.type === 'action') cls = 'action';
     html += `<div class="history-entry"><span class="${cls}">[${t}] ${escapeHtml(h.text)}</span></div>`;
   }
   root.innerHTML = html;
@@ -184,29 +209,54 @@ function escapeHtml(s) {
 }
 
 export function renderActions() {
+  const a = findAsset(state.selectedAssetId);
   const buy = $('#buy-btn');
   const sell = $('#sell-btn');
-  const inspect = $('#inspect-btn');
-  const a = findAsset(state.selectedAssetId);
+  const mission = $('#mission-btn');
+  const rumor = $('#rumor-btn');
+  const collab = $('#collab-btn');
+  const release = $('#release-btn');
+
   if (!a) {
-    buy.disabled = sell.disabled = inspect.disabled = true;
+    buy.disabled = sell.disabled = mission.disabled = rumor.disabled = collab.disabled = release.disabled = true;
     buy.textContent = 'BUY';
     sell.textContent = 'SELL';
     return;
   }
-  inspect.disabled = false;
-  buy.disabled = state.capital < a.price;
+  const owned = state.holdings.get(a.id);
+  const tradable = canPlayerTrade(a);
+
+  buy.disabled = !tradable || state.capital < a.price;
   buy.textContent = `BUY ${a.price.toFixed(3)}`;
-  const holding = state.holdings.get(a.id);
-  sell.disabled = !holding || holding.qty <= 0;
-  sell.textContent = holding ? `SELL ${a.price.toFixed(3)}` : 'SELL';
+  sell.disabled = !owned || owned.qty <= 0;
+  sell.textContent = owned ? `SELL ${a.price.toFixed(3)}` : 'SELL';
+
+  mission.disabled = !owned;
+  rumor.disabled = !owned;
+  collab.disabled = !owned || state.holdings.size < 2;
+  release.disabled = !owned;
 }
 
+// ============ DIALOGUE BUBBLES ============
+export function pumpDialogue() {
+  const stack = $('#dialogue-stack');
+  while (true) {
+    const item = popDialogue();
+    if (!item) break;
+    const div = document.createElement('div');
+    div.className = `dialogue-bubble kind-${item.kind || 'persona'}`;
+    div.innerHTML = `<span class="speaker">${escapeHtml(item.speaker)}</span><span class="line">${escapeHtml(item.line)}</span>`;
+    stack.appendChild(div);
+    setTimeout(() => div.remove(), 6500);
+    while (stack.children.length > 4) stack.removeChild(stack.firstChild);
+  }
+}
+
+// ============ BANNERS / MODAL ============
 export function showEventBanner(text) {
   const b = $('#event-banner');
   b.textContent = text;
   b.classList.remove('hidden');
-  // Restart animation
   b.style.animation = 'none';
   void b.offsetWidth;
   b.style.animation = '';
@@ -229,15 +279,11 @@ export function showCycleEnd(stats, kageLine) {
     <div class="stat-row"><span class="label">PERSONAS BOUGHT</span><span>${stats.bought}</span></div>
     <div class="stat-row"><span class="label">PERSONAS SOLD</span><span>${stats.sold}</span></div>
     <div class="stat-row"><span class="label">RETAINED</span><span>${stats.retained}</span></div>
+    <div class="stat-row"><span class="label">INHUMANITY</span><span>${Math.round(state.inhumanity)} / 100  (${bandOf(state.inhumanity)})</span></div>
   `;
   kage.textContent = kageLine;
   overlay.classList.remove('hidden');
 }
 
-export function hideCycleEnd() {
-  $('#cycle-end-overlay').classList.add('hidden');
-}
-
-export function hideBoot() {
-  $('#boot-overlay').classList.add('hidden');
-}
+export function hideCycleEnd() { $('#cycle-end-overlay').classList.add('hidden'); }
+export function hideBoot() { $('#boot-overlay').classList.add('hidden'); }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>NEON BROKER — Solo Build v0.1</title>
+<title>NEON BROKER — v0.2</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,12 +16,19 @@
     </div>
     <div class="hud-right">
       <span class="capital">CAPITAL <span id="capital">1.50</span> ETH</span>
-      <span class="speed">SPEED
+      <span class="inhumanity">INHUMANITY
+        <span id="inhumanity-meter">
+          <span class="meter-fill" id="inh-fill"></span>
+        </span>
+        <span id="inh-num">5</span>
+      </span>
+      <span class="speed">
         <button class="speed-btn" data-speed="1">1x</button>
         <button class="speed-btn active" data-speed="5">5x</button>
         <button class="speed-btn" data-speed="20">20x</button>
         <button class="speed-btn" data-speed="0">⏸</button>
       </span>
+      <button class="mute-btn" id="mute-btn" title="mute">♪</button>
     </div>
   </header>
 
@@ -33,6 +40,12 @@
         <span id="chart-price"></span>
       </div>
       <svg id="chart" viewBox="0 0 800 320" preserveAspectRatio="none"></svg>
+      <div id="persona-card">
+        <div class="pcard-name" id="pcard-name">—</div>
+        <div class="pcard-meta" id="pcard-meta"></div>
+        <div class="pcard-summary" id="pcard-summary"></div>
+        <div class="pcard-traits" id="pcard-traits"></div>
+      </div>
     </section>
 
     <section id="market-panel" class="panel">
@@ -58,10 +71,13 @@
       <div id="holdings"></div>
     </section>
 
-    <section id="actions-panel" class="panel">
+    <section id="actions-panel">
       <button id="buy-btn" class="action-btn buy" disabled>BUY</button>
       <button id="sell-btn" class="action-btn sell" disabled>SELL</button>
-      <button id="inspect-btn" class="action-btn inspect" disabled>INSPECT</button>
+      <button id="mission-btn" class="action-btn mission" disabled>MISSION</button>
+      <button id="rumor-btn" class="action-btn rumor" disabled>RUMOR</button>
+      <button id="collab-btn" class="action-btn collab" disabled>COLLAB</button>
+      <button id="release-btn" class="action-btn release" disabled>RELEASE</button>
     </section>
 
     <section id="history-panel" class="panel">
@@ -72,6 +88,8 @@
     </section>
 
   </main>
+
+  <div id="dialogue-stack"></div>
 
   <div id="event-banner" class="hidden"></div>
 
@@ -86,8 +104,7 @@
 
   <div id="boot-overlay">
     <pre id="boot-text">> CONNECTION ESTABLISHED
-> NEO-TOKYO UNDERMARKET v0.1.0
-> SOLO BUILD — MARKET VERIFICATION
+> NEO-TOKYO UNDERMARKET v0.2.0
 > WELCOME, BROKER.</pre>
     <button id="start-btn">[ ENTER MARKET ]</button>
   </div>

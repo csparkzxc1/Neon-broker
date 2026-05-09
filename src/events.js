@@ -1,5 +1,15 @@
 import { state, logHistory } from './state.js';
-import { TRAITS } from './data.js';
+
+function collectTraitValues() {
+  const out = { hair: new Set(), outfit: new Set(), accessory: new Set(), background: new Set(), aura: new Set() };
+  for (const a of state.assets) {
+    for (const k of Object.keys(out)) {
+      if (a.traits[k]) out[k].add(a.traits[k]);
+    }
+  }
+  for (const k of Object.keys(out)) out[k] = [...out[k]];
+  return out;
+}
 
 // 5 event types per market-simulation.md.
 // We schedule rolls at ~5 / ~15 / ~25 minutes into the cycle (game time).
@@ -10,14 +20,15 @@ const EVENT_DEFS = [
     weight: 0.40,
     durationSec: 600,
     apply(ev) {
-      const cats = Object.keys(TRAITS);
+      const traitValues = collectTraitValues();
+      const cats = Object.keys(traitValues).filter(k => traitValues[k].length > 0);
       const cat = cats[Math.floor(Math.random() * cats.length)];
-      const pool = TRAITS[cat];
+      const pool = traitValues[cat];
       const value = pool[Math.floor(Math.random() * pool.length)];
       ev.cat = cat;
       ev.value = value;
       ev.intensity = 0.0015 + Math.random() * 0.0025;
-      ev.label = `TREND ↑ ${cat.toUpperCase()}: ${value.toUpperCase().replace('_', ' ')}`;
+      ev.label = `TREND ↑ ${cat.toUpperCase()}: ${String(value).toUpperCase().replace(/_/g, ' ')}`;
     },
     perTick(ev, asset) {
       if (asset.traits[ev.cat] === ev.value) return ev.intensity;
