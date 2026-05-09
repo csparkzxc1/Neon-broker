@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NEON BROKER — Solo Build v0.1</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+
+  <header id="hud">
+    <div class="hud-left">
+      <span class="title">NEON BROKER</span>
+      <span class="cycle">CYCLE <span id="cycle-num">1</span></span>
+      <span class="timer" id="timer">30:00</span>
+    </div>
+    <div class="hud-right">
+      <span class="capital">CAPITAL <span id="capital">1.50</span> ETH</span>
+      <span class="speed">SPEED
+        <button class="speed-btn" data-speed="1">1x</button>
+        <button class="speed-btn active" data-speed="5">5x</button>
+        <button class="speed-btn" data-speed="20">20x</button>
+        <button class="speed-btn" data-speed="0">⏸</button>
+      </span>
+    </div>
+  </header>
+
+  <main id="grid">
+
+    <section id="chart-panel" class="panel">
+      <div class="panel-header">
+        <span id="chart-title">DEPTH CHART — select asset</span>
+        <span id="chart-price"></span>
+      </div>
+      <svg id="chart" viewBox="0 0 800 320" preserveAspectRatio="none"></svg>
+    </section>
+
+    <section id="market-panel" class="panel">
+      <div class="panel-header">
+        <span>MARKET</span>
+        <span id="market-count">30</span>
+      </div>
+      <div id="market-list"></div>
+    </section>
+
+    <section id="orderbook-panel" class="panel">
+      <div class="panel-header">
+        <span>ORDER BOOK</span>
+      </div>
+      <div id="orderbook"></div>
+    </section>
+
+    <section id="holdings-panel" class="panel">
+      <div class="panel-header">
+        <span>HOLDINGS</span>
+        <span id="holdings-count">0</span>
+      </div>
+      <div id="holdings"></div>
+    </section>
+
+    <section id="actions-panel" class="panel">
+      <button id="buy-btn" class="action-btn buy" disabled>BUY</button>
+      <button id="sell-btn" class="action-btn sell" disabled>SELL</button>
+      <button id="inspect-btn" class="action-btn inspect" disabled>INSPECT</button>
+    </section>
+
+    <section id="history-panel" class="panel">
+      <div class="panel-header">
+        <span>HISTORY</span>
+      </div>
+      <div id="history"></div>
+    </section>
+
+  </main>
+
+  <div id="event-banner" class="hidden"></div>
+
+  <div id="cycle-end-overlay" class="hidden">
+    <div class="modal">
+      <h1>CYCLE COMPLETE</h1>
+      <div id="cycle-end-stats"></div>
+      <div class="kage-line" id="kage-line"></div>
+      <button id="next-cycle-btn">START CYCLE 2</button>
+    </div>
+  </div>
+
+  <div id="boot-overlay">
+    <pre id="boot-text">> CONNECTION ESTABLISHED
+> NEO-TOKYO UNDERMARKET v0.1.0
+> SOLO BUILD — MARKET VERIFICATION
+> WELCOME, BROKER.</pre>
+    <button id="start-btn">[ ENTER MARKET ]</button>
+  </div>
+
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
