@@ -1,0 +1,417 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="ui-monospace, 'Courier New', monospace">
+<defs>
+  <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.18"/>
+    <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="chartBg" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0%" stop-color="#050505"/>
+    <stop offset="100%" stop-color="#000000"/>
+  </linearGradient>
+</defs>
+
+<!-- BG -->
+<rect width="1600" height="900" fill="#000"/>
+
+<!-- ========= HEADER ========= -->
+<rect x="0" y="0" width="1600" height="46" fill="#0e0e0e"/>
+<line x1="0" y1="46" x2="1600" y2="46" stroke="#2a2a2a"/>
+
+<text x="16" y="29" fill="#FF6B1A" font-size="16" font-weight="bold" letter-spacing="2">NEON BROKER</text>
+<text x="200" y="29" fill="#777" font-size="13">CYCLE</text>
+<text x="255" y="29" fill="#E5E5E5" font-size="13">2</text>
+<text x="290" y="29" fill="#00E5FF" font-size="14" font-variant-numeric="tabular-nums">24:13</text>
+
+<!-- HUD right -->
+<text x="990" y="29" fill="#777" font-size="13">CAPITAL</text>
+<text x="1060" y="29" fill="#E5E5E5" font-size="13">2.347 ETH</text>
+
+<text x="1170" y="29" fill="#777" font-size="13">INHUMANITY</text>
+<rect x="1268" y="20" width="80" height="10" fill="#1a1a1a" stroke="#2a2a2a"/>
+<rect x="1268" y="20" width="28" height="10" fill="#FFB300"/>
+<text x="1356" y="29" fill="#E5E5E5" font-size="13">35</text>
+
+<rect x="1396" y="18" width="24" height="16" fill="#1a1a1a" stroke="#2a2a2a"/>
+<text x="1402" y="30" fill="#777" font-size="11">1x</text>
+<rect x="1422" y="18" width="24" height="16" fill="#1a1a1a" stroke="#FF6B1A"/>
+<text x="1428" y="30" fill="#FF6B1A" font-size="11">5x</text>
+<rect x="1448" y="18" width="28" height="16" fill="#1a1a1a" stroke="#2a2a2a"/>
+<text x="1455" y="30" fill="#777" font-size="11">20x</text>
+<rect x="1478" y="18" width="20" height="16" fill="#1a1a1a" stroke="#2a2a2a"/>
+<text x="1485" y="30" fill="#777" font-size="11">⏸</text>
+<rect x="1518" y="18" width="34" height="16" fill="#1a1a1a" stroke="#2a2a2a"/>
+<text x="1531" y="31" fill="#00E5FF" font-size="13">♪</text>
+
+<!-- ========= DEPTH CHART PANEL ========= -->
+<g>
+  <rect x="8" y="54" width="1260" height="420" fill="#0e0e0e" stroke="#2a2a2a"/>
+  <rect x="8" y="54" width="1260" height="24" fill="#1a1a1a"/>
+  <line x1="8" y1="78" x2="1268" y2="78" stroke="#2a2a2a"/>
+  <text x="20" y="71" fill="#FF6B1A" font-size="11" letter-spacing="1">DEPTH CHART — NULL-07</text>
+  <rect x="190" y="60" width="22" height="14" fill="none" stroke="#00FF88"/>
+  <text x="196" y="71" fill="#00FF88" font-size="9">U</text>
+  <text x="1140" y="71" fill="#00FF88" font-size="11" font-variant-numeric="tabular-nums">0.423 ETH  +8.43%</text>
+
+  <!-- Chart area -->
+  <rect x="8" y="78" width="1260" height="396" fill="url(#chartBg)"/>
+
+  <!-- Grid lines -->
+  <line x1="8" y1="174" x2="1268" y2="174" stroke="#444" stroke-width="0.5" stroke-dasharray="2 4"/>
+  <line x1="8" y1="270" x2="1268" y2="270" stroke="#444" stroke-width="0.5" stroke-dasharray="2 4"/>
+  <line x1="8" y1="366" x2="1268" y2="366" stroke="#444" stroke-width="0.5" stroke-dasharray="2 4"/>
+
+  <!-- Price line area fill -->
+  <path d="M 8,360 L 60,340 L 120,355 L 180,330 L 240,310 L 300,320 L 360,290 L 420,275 L 480,295 L 540,260 L 600,240 L 660,250 L 720,220 L 780,200 L 840,225 L 900,195 L 960,180 L 1020,210 L 1080,170 L 1140,150 L 1200,165 L 1268,140 L 1268,474 L 8,474 Z"
+        fill="url(#chartFill)"/>
+  <!-- Price line stroke -->
+  <polyline points="8,360 60,340 120,355 180,330 240,310 300,320 360,290 420,275 480,295 540,260 600,240 660,250 720,220 780,200 840,225 900,195 960,180 1020,210 1080,170 1140,150 1200,165 1268,140"
+            stroke="#00E5FF" stroke-width="1.5" fill="none"/>
+
+  <text x="14" y="92" fill="#777" font-size="11">0.445</text>
+  <text x="14" y="466" fill="#777" font-size="11">0.296</text>
+
+  <!-- Persona card overlay -->
+  <g transform="translate(990, 96)">
+    <rect width="262" height="172" fill="#0a0a0a" stroke="#2a2a2a" opacity="0.92"/>
+    <text x="12" y="20" fill="#FF6B1A" font-size="14" font-weight="bold" letter-spacing="1">NULL-07</text>
+    <text x="12" y="38" fill="#777" font-size="10">U · EGO 65 · 3x traded by you</text>
+    <text x="12" y="58" fill="#E5E5E5" font-size="11">NULL 시리즈 7번째.</text>
+    <text x="12" y="74" fill="#E5E5E5" font-size="11">정체성이 비어있다.</text>
+    <text x="12" y="100" fill="#777" font-size="10">H: black_bob</text>
+    <text x="12" y="114" fill="#777" font-size="10">O: hoodie</text>
+    <text x="12" y="128" fill="#777" font-size="10">A: none</text>
+    <text x="12" y="142" fill="#777" font-size="10">BG: void</text>
+    <text x="12" y="156" fill="#777" font-size="10">AURA: glitch</text>
+  </g>
+</g>
+
+<!-- ========= MARKET LIST (right) ========= -->
+<g>
+  <rect x="1276" y="54" width="316" height="838" fill="#0e0e0e" stroke="#2a2a2a"/>
+  <rect x="1276" y="54" width="316" height="24" fill="#1a1a1a"/>
+  <text x="1288" y="71" fill="#777" font-size="11" letter-spacing="1">MARKET</text>
+  <text x="1565" y="71" fill="#777" font-size="11">30</text>
+
+  <!-- rows -->
+  <g font-size="12">
+    <!-- header headerless: just rows -->
+    <g transform="translate(1280, 84)">
+      <!-- NIRVANA L (highlighted/selected style) -->
+      <rect x="0" y="0" width="308" height="22" fill="#1a1a1a"/>
+      <text x="6" y="15" fill="#E5E5E5">NIRVANA</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#FF6B1A"/><text x="93" y="14" font-size="9" fill="#FF6B1A">L</text>
+      <text x="135" y="15" fill="#E5E5E5" font-variant-numeric="tabular-nums">6.142</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +1.8%</text>
+    </g>
+    <g transform="translate(1280, 108)">
+      <text x="6" y="15" fill="#E5E5E5">REAPER-13</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#FF6B1A"/><text x="93" y="14" font-size="9" fill="#FF6B1A">L</text>
+      <text x="135" y="15" fill="#E5E5E5" font-variant-numeric="tabular-nums">4.082</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.0%</text>
+    </g>
+    <g transform="translate(1280, 132)">
+      <text x="6" y="15" fill="#E5E5E5">MIKADO-1</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#FF6B1A"/><text x="93" y="14" font-size="9" fill="#FF6B1A">L</text>
+      <text x="135" y="15" fill="#E5E5E5" font-variant-numeric="tabular-nums">5.220</text>
+      <text x="245" y="15" fill="#FF3D7F" font-size="10">↘ -0.4%</text>
+    </g>
+    <g transform="translate(1280, 156)">
+      <text x="6" y="15" fill="#E5E5E5">NULL-13</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#c060ff"/><text x="93" y="14" font-size="9" fill="#c060ff">SR</text>
+      <text x="135" y="15" fill="#E5E5E5">1.842</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +2.3%</text>
+    </g>
+    <g transform="translate(1280, 180)">
+      <text x="6" y="15" fill="#E5E5E5">GHOST-88</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#c060ff"/><text x="93" y="14" font-size="9" fill="#c060ff">SR</text>
+      <text x="135" y="15" fill="#E5E5E5">1.519</text>
+      <text x="245" y="15" fill="#FF3D7F" font-size="10">↘ -1.2%</text>
+    </g>
+    <g transform="translate(1280, 204)">
+      <text x="6" y="15" fill="#E5E5E5">KITSUNE-3</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#c060ff"/><text x="93" y="14" font-size="9" fill="#c060ff">SR</text>
+      <text x="135" y="15" fill="#E5E5E5">1.673</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.0%</text>
+    </g>
+    <g transform="translate(1280, 228)">
+      <text x="6" y="15" fill="#E5E5E5">FOX-SPIRIT</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#c060ff"/><text x="93" y="14" font-size="9" fill="#c060ff">SR</text>
+      <text x="135" y="15" fill="#E5E5E5">1.840</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +0.9%</text>
+    </g>
+    <g transform="translate(1280, 252)">
+      <text x="6" y="15" fill="#E5E5E5">REI-99</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00E5FF"/><text x="93" y="14" font-size="9" fill="#00E5FF">R</text>
+      <text x="135" y="15" fill="#E5E5E5">0.812</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +3.4%</text>
+    </g>
+    <g transform="translate(1280, 276)">
+      <text x="6" y="15" fill="#E5E5E5">KIRA-77</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00E5FF"/><text x="93" y="14" font-size="9" fill="#00E5FF">R</text>
+      <text x="135" y="15" fill="#E5E5E5">0.945</text>
+      <text x="245" y="15" fill="#FF3D7F" font-size="10">↘ -2.1%</text>
+    </g>
+    <g transform="translate(1280, 300)">
+      <text x="6" y="15" fill="#E5E5E5">NEKO-G</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00E5FF"/><text x="93" y="14" font-size="9" fill="#00E5FF">R</text>
+      <text x="135" y="15" fill="#E5E5E5">1.020</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.1%</text>
+    </g>
+    <g transform="translate(1280, 324)">
+      <text x="6" y="15" fill="#E5E5E5">AGENT-K</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00E5FF"/><text x="93" y="14" font-size="9" fill="#00E5FF">R</text>
+      <text x="135" y="15" fill="#E5E5E5">0.964</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +0.6%</text>
+    </g>
+    <g transform="translate(1280, 348)">
+      <text x="6" y="15" fill="#E5E5E5">DJ-MARIA</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00E5FF"/><text x="93" y="14" font-size="9" fill="#00E5FF">R</text>
+      <text x="135" y="15" fill="#E5E5E5">0.882</text>
+      <text x="245" y="15" fill="#FF3D7F" font-size="10">↘ -0.8%</text>
+    </g>
+    <!-- SELECTED ROW (NULL-07) -->
+    <g transform="translate(1276, 372)">
+      <rect x="4" y="0" width="308" height="22" fill="#33180a" stroke="none"/>
+      <rect x="4" y="0" width="2" height="22" fill="#FF6B1A"/>
+      <text x="10" y="15" fill="#E5E5E5">NULL-07</text>
+      <rect x="94" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="97" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="139" y="15" fill="#E5E5E5">0.423</text>
+      <text x="249" y="15" fill="#00FF88" font-size="10">↗ +8.4%</text>
+    </g>
+    <g transform="translate(1280, 396)">
+      <text x="6" y="15" fill="#E5E5E5">HARU-44</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.398</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +1.4%</text>
+    </g>
+    <g transform="translate(1280, 420)">
+      <text x="6" y="15" fill="#E5E5E5">MEI-19</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.512</text>
+      <text x="245" y="15" fill="#FF3D7F" font-size="10">↘ -0.5%</text>
+    </g>
+    <g transform="translate(1280, 444)">
+      <text x="6" y="15" fill="#E5E5E5">ZEN-04</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.456</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.0%</text>
+    </g>
+    <g transform="translate(1280, 468)">
+      <text x="6" y="15" fill="#E5E5E5">SUMO-1</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.348</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +0.3%</text>
+    </g>
+    <g transform="translate(1280, 492)">
+      <text x="6" y="15" fill="#E5E5E5">IDOL-12</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.612</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +3.7%</text>
+    </g>
+    <g transform="translate(1280, 516)">
+      <text x="6" y="15" fill="#E5E5E5">MEDIC-2</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.498</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.0%</text>
+    </g>
+    <!-- LOCKED row example (faded) -->
+    <g transform="translate(1280, 540)" opacity="0.4">
+      <text x="6" y="15" fill="#E5E5E5">COP-1</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.561</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.0%</text>
+    </g>
+    <g transform="translate(1280, 564)">
+      <text x="6" y="15" fill="#E5E5E5">TEACHER-5</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.554</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.1%</text>
+    </g>
+    <g transform="translate(1280, 588)">
+      <text x="6" y="15" fill="#E5E5E5">NEKO-CHAN</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#00FF88"/><text x="93" y="14" font-size="9" fill="#00FF88">U</text>
+      <text x="135" y="15" fill="#E5E5E5">0.507</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +0.8%</text>
+    </g>
+    <g transform="translate(1280, 612)">
+      <text x="6" y="15" fill="#E5E5E5">KAYA-22</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#777"/><text x="93" y="14" font-size="9" fill="#777">C</text>
+      <text x="135" y="15" fill="#E5E5E5">0.154</text>
+      <text x="245" y="15" fill="#FF3D7F" font-size="10">↘ -0.6%</text>
+    </g>
+    <g transform="translate(1280, 636)">
+      <text x="6" y="15" fill="#E5E5E5">NORI-08</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#777"/><text x="93" y="14" font-size="9" fill="#777">C</text>
+      <text x="135" y="15" fill="#E5E5E5">0.124</text>
+      <text x="245" y="15" fill="#777" font-size="10">→ 0.0%</text>
+    </g>
+    <g transform="translate(1280, 660)">
+      <text x="6" y="15" fill="#E5E5E5">TANAKA-3</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#777"/><text x="93" y="14" font-size="9" fill="#777">C</text>
+      <text x="135" y="15" fill="#E5E5E5">0.102</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +0.4%</text>
+    </g>
+    <g transform="translate(1280, 684)">
+      <text x="6" y="15" fill="#E5E5E5">CHEF-8</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#777"/><text x="93" y="14" font-size="9" fill="#777">C</text>
+      <text x="135" y="15" fill="#E5E5E5">0.181</text>
+      <text x="245" y="15" fill="#FF3D7F" font-size="10">↘ -0.3%</text>
+    </g>
+    <g transform="translate(1280, 708)">
+      <text x="6" y="15" fill="#E5E5E5">ROBO-DOG</text>
+      <rect x="90" y="3" width="18" height="14" fill="none" stroke="#777"/><text x="93" y="14" font-size="9" fill="#777">C</text>
+      <text x="135" y="15" fill="#E5E5E5">0.082</text>
+      <text x="245" y="15" fill="#00FF88" font-size="10">↗ +0.2%</text>
+    </g>
+    <g transform="translate(1280, 732)">
+      <text x="6" y="15" fill="#777" font-style="italic">↓ scroll for 10 more</text>
+    </g>
+  </g>
+</g>
+
+<!-- ========= ORDER BOOK ========= -->
+<g>
+  <rect x="8" y="482" width="620" height="180" fill="#0e0e0e" stroke="#2a2a2a"/>
+  <rect x="8" y="482" width="620" height="24" fill="#1a1a1a"/>
+  <text x="20" y="499" fill="#777" font-size="11" letter-spacing="1">ORDER BOOK</text>
+
+  <!-- 3-column -->
+  <line x1="216" y1="506" x2="216" y2="662" stroke="#2a2a2a"/>
+  <line x1="424" y1="506" x2="424" y2="662" stroke="#2a2a2a"/>
+
+  <!-- ASKS (left, danger color) -->
+  <g font-size="12" font-variant-numeric="tabular-nums" fill="#FF3D7F">
+    <text x="18" y="524">ASK</text><text x="100" y="524">0.467</text><text x="142" y="524" fill="#777" font-size="10">x2 RIZE-X</text>
+    <text x="18" y="540">ASK</text><text x="100" y="540">0.452</text><text x="142" y="540" fill="#777" font-size="10">x1 MARKET</text>
+    <text x="18" y="556">ASK</text><text x="100" y="556">0.441</text><text x="142" y="556" fill="#777" font-size="10">x1 KOJI</text>
+    <text x="18" y="572">ASK</text><text x="100" y="572">0.435</text><text x="142" y="572" fill="#777" font-size="10">x2 MARKET</text>
+    <text x="18" y="588">ASK</text><text x="100" y="588">0.429</text><text x="142" y="588" fill="#777" font-size="10">x1 MARKET</text>
+  </g>
+
+  <!-- LAST (center) -->
+  <rect x="216" y="506" width="208" height="156" fill="#1a1a1a"/>
+  <text x="320" y="568" text-anchor="middle" fill="#777" font-size="10" letter-spacing="1">LAST</text>
+  <text x="320" y="600" text-anchor="middle" fill="#FF6B1A" font-size="32" font-variant-numeric="tabular-nums">0.423</text>
+
+  <!-- BIDS (right, success color) -->
+  <g font-size="12" font-variant-numeric="tabular-nums" fill="#00FF88">
+    <text x="434" y="524">BID</text><text x="516" y="524">0.418</text><text x="558" y="524" fill="#777" font-size="10">x1 NIGHTOWL</text>
+    <text x="434" y="540">BID</text><text x="516" y="540">0.412</text><text x="558" y="540" fill="#777" font-size="10">x2 MARKET</text>
+    <text x="434" y="556">BID</text><text x="516" y="556">0.402</text><text x="558" y="556" fill="#777" font-size="10">x1 ORACLE-3</text>
+    <text x="434" y="572">BID</text><text x="516" y="572">0.395</text><text x="558" y="572" fill="#777" font-size="10">x2 MARKET</text>
+    <text x="434" y="588">BID</text><text x="516" y="588">0.382</text><text x="558" y="588" fill="#777" font-size="10">x1 MARKET</text>
+  </g>
+</g>
+
+<!-- ========= HOLDINGS ========= -->
+<g>
+  <rect x="8" y="670" width="620" height="120" fill="#0e0e0e" stroke="#2a2a2a"/>
+  <rect x="8" y="670" width="620" height="24" fill="#1a1a1a"/>
+  <text x="20" y="687" fill="#777" font-size="11" letter-spacing="1">HOLDINGS</text>
+  <text x="610" y="687" fill="#777" font-size="11" text-anchor="end">3</text>
+
+  <!-- Selected NULL-07 -->
+  <rect x="8" y="694" width="620" height="26" fill="#00121a"/>
+  <rect x="8" y="694" width="2" height="26" fill="#00E5FF"/>
+  <text x="20" y="711" fill="#E5E5E5" font-size="12">NULL-07</text>
+  <rect x="100" y="700" width="18" height="14" fill="none" stroke="#00FF88"/><text x="103" y="711" font-size="9" fill="#00FF88">U</text>
+  <text x="135" y="711" fill="#777" font-size="11">x1 @ 0.300</text>
+  <text x="380" y="711" fill="#E5E5E5" font-size="12">0.423</text>
+  <text x="615" y="711" fill="#00FF88" font-size="12" text-anchor="end">+0.123</text>
+
+  <text x="20" y="738" fill="#E5E5E5" font-size="12">MEI-19</text>
+  <rect x="100" y="727" width="18" height="14" fill="none" stroke="#00FF88"/><text x="103" y="738" font-size="9" fill="#00FF88">U</text>
+  <text x="135" y="738" fill="#777" font-size="11">x1 @ 0.500</text>
+  <text x="380" y="738" fill="#E5E5E5" font-size="12">0.512</text>
+  <text x="615" y="738" fill="#00FF88" font-size="12" text-anchor="end">+0.012</text>
+
+  <text x="20" y="765" fill="#E5E5E5" font-size="12">ZEN-04</text>
+  <rect x="100" y="754" width="18" height="14" fill="none" stroke="#00FF88"/><text x="103" y="765" font-size="9" fill="#00FF88">U</text>
+  <text x="135" y="765" fill="#777" font-size="11">x1 @ 0.450</text>
+  <text x="380" y="765" fill="#E5E5E5" font-size="12">0.456</text>
+  <text x="615" y="765" fill="#00FF88" font-size="12" text-anchor="end">+0.006</text>
+</g>
+
+<!-- ========= ACTIONS BAR ========= -->
+<g>
+  <rect x="8" y="798" width="620" height="38" fill="#0e0e0e" stroke="#2a2a2a"/>
+  <rect x="14" y="804" width="98" height="26" fill="#1a1a1a" stroke="#FF6B1A"/>
+  <text x="63" y="822" text-anchor="middle" fill="#FF6B1A" font-size="11">BUY 0.423</text>
+
+  <rect x="116" y="804" width="98" height="26" fill="#1a1a1a" stroke="#FF3D7F"/>
+  <text x="165" y="822" text-anchor="middle" fill="#FF3D7F" font-size="11">SELL 0.423</text>
+
+  <rect x="218" y="804" width="98" height="26" fill="#1a1a1a" stroke="#00FF88"/>
+  <text x="267" y="822" text-anchor="middle" fill="#00FF88" font-size="11">MISSION</text>
+
+  <rect x="320" y="804" width="98" height="26" fill="#1a1a1a" stroke="#FFB300"/>
+  <text x="369" y="822" text-anchor="middle" fill="#FFB300" font-size="11">RUMOR</text>
+
+  <rect x="422" y="804" width="98" height="26" fill="#1a1a1a" stroke="#c060ff"/>
+  <text x="471" y="822" text-anchor="middle" fill="#c060ff" font-size="11">COLLAB</text>
+
+  <rect x="524" y="804" width="98" height="26" fill="#1a1a1a" stroke="#00E5FF"/>
+  <text x="573" y="822" text-anchor="middle" fill="#00E5FF" font-size="11">RELEASE</text>
+</g>
+
+<!-- ========= HISTORY ========= -->
+<g>
+  <rect x="636" y="482" width="632" height="410" fill="#0e0e0e" stroke="#2a2a2a"/>
+  <rect x="636" y="482" width="632" height="24" fill="#1a1a1a"/>
+  <text x="648" y="499" fill="#777" font-size="11" letter-spacing="1">HISTORY</text>
+
+  <g font-size="11" font-family="ui-monospace, monospace">
+    <text x="648" y="524" fill="#00E5FF">[05:42]</text><text x="710" y="524" fill="#00E5FF">PLAYER bought NULL-07 x1 @ 0.300</text>
+    <text x="648" y="540" fill="#777">[05:55] KAGE bought NIRVANA from MARKET @ 6.140</text>
+    <text x="648" y="556" fill="#FF6B1A">[06:12]</text><text x="710" y="556" fill="#FF6B1A">EVENT: TREND ↑ HAIR: BLACK BOB</text>
+    <text x="648" y="572" fill="#c060ff">[06:13]</text><text x="710" y="572" fill="#c060ff">MISSION dispatched: NULL-07 (success 70%)</text>
+    <text x="648" y="588" fill="#777">[06:20] RIZE-X bought NULL-07 from MARKET @ 0.412</text>
+    <text x="648" y="604" fill="#777">[06:32] JUNK_BOI bought IDOL-12 from MARKET @ 0.612</text>
+    <text x="648" y="620" fill="#777">[06:45] WHALE_77 bought MIKADO-1 from MARKET @ 5.220</text>
+    <text x="648" y="636" fill="#c060ff">[07:08]</text><text x="710" y="636" fill="#c060ff">MISSION SUCCESS: NULL-07 +8.2%</text>
+    <text x="648" y="652" fill="#777">[07:24] MAMA-SHIN bought KITSUNE-3 from MARKET @ 1.673</text>
+    <text x="648" y="668" fill="#FF3D7F">[07:51]</text><text x="710" y="668" fill="#FF3D7F">PLAYER sold KAYA-22 x1 @ 0.154 (-0.013)</text>
+    <text x="648" y="684" fill="#777">[08:10] ORACLE-3 bought REI-99 from MARKET @ 0.802</text>
+    <text x="648" y="700" fill="#c060ff">[08:33]</text><text x="710" y="700" fill="#c060ff">RUMOR: REI-99 +6.3%</text>
+    <text x="648" y="716" fill="#777">[08:48] NIGHTOWL bought GHOST-88 from MARKET @ 1.519</text>
+    <text x="648" y="732" fill="#FF6B1A">[09:01]</text><text x="710" y="732" fill="#FF6B1A">EVENT: MARKET BOOM — VOLUME +30%</text>
+    <text x="648" y="748" fill="#777">[09:23] KAGE bought REAPER-13 from MARKET @ 4.080</text>
+    <text x="648" y="764" fill="#777">[09:45] JUNK_BOI sold NEKO-CHAN from MARKET @ 0.498</text>
+    <text x="648" y="780" fill="#c060ff">[10:02]</text><text x="710" y="780" fill="#c060ff">COLLAB: MEI-19 aura: sparkle → glitch (+3.1%)</text>
+    <text x="648" y="796" fill="#00E5FF">[10:30]</text><text x="710" y="796" fill="#00E5FF">PLAYER bought ZEN-04 x1 @ 0.450</text>
+    <text x="648" y="812" fill="#777">[10:48] SISTER bought FOX-SPIRIT from MARKET @ 1.840</text>
+    <text x="648" y="828" fill="#777">[11:05] RIZE-X bought NULL-07 from MARKET @ 0.420</text>
+    <text x="648" y="844" fill="#FFB300">[11:22]</text><text x="710" y="844" fill="#FFB300">INHUMANITY threshold crossed: warn1 → warn2</text>
+    <text x="648" y="860" fill="#777">[11:40] WHALE_77 sold DRAGON-9 from MARKET @ 4.500</text>
+  </g>
+</g>
+
+<!-- ========= EVENT BANNER ========= -->
+<g transform="translate(660, 60)">
+  <rect x="0" y="0" width="280" height="32" fill="#1a1a1a" stroke="#FF6B1A"/>
+  <text x="140" y="21" text-anchor="middle" fill="#FF6B1A" font-size="12" letter-spacing="2">MARKET BOOM — VOLUME +30%</text>
+</g>
+
+<!-- ========= DIALOGUE STACK (left bottom) ========= -->
+<g transform="translate(16, 690)">
+  <!-- Bubble 3 (newest, on top) -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="360" height="48" fill="#000" stroke="#00E5FF" opacity="0.95"/>
+    <text x="14" y="18" fill="#FF6B1A" font-size="10" font-weight="bold" letter-spacing="1">NULL-07</text>
+    <text x="14" y="36" fill="#E5E5E5" font-size="13">기억하고 있어요. 다 기억해요.</text>
+  </g>
+  <!-- Bubble 2 -->
+  <g transform="translate(0, -60)" opacity="0.85">
+    <rect x="0" y="0" width="360" height="48" fill="#000" stroke="#FF6B1A"/>
+    <text x="14" y="18" fill="#FFB300" font-size="10" font-weight="bold" letter-spacing="1">KAGE</text>
+    <text x="14" y="36" fill="#E5E5E5" font-size="13">너무 빨라. 시장이 너를 본다.</text>
+  </g>
+  <!-- Bubble 1 -->
+  <g transform="translate(0, -120)" opacity="0.7">
+    <rect x="0" y="0" width="360" height="48" fill="#000" stroke="#00E5FF"/>
+    <text x="14" y="18" fill="#FF6B1A" font-size="10" font-weight="bold" letter-spacing="1">MEI-19</text>
+    <text x="14" y="36" fill="#E5E5E5" font-size="13">정의의 이름으로!</text>
+  </g>
+</g>
+
+</svg>
